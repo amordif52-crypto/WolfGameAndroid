@@ -27,7 +27,10 @@ jobs:
 
       - name: Build APK
         run: |
-          cd project/WolfGameAndroid_Project
+          cd project
+          GRADLEW=$(find . -name gradlew -type f | head -n 1)
+          test -n "$GRADLEW"
+          cd "$(dirname "$GRADLEW")"
           chmod +x gradlew
           ./gradlew assembleDebug
 
